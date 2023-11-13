@@ -3,11 +3,11 @@ package com.example.albi
 //Name: Tim Müller
 //St. Number: 3133761
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,34 +18,39 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import com.example.albi.ui.theme.*
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WelcomeLayout()
+            WelcomeLayout() //calling main function drawing layout
         }
     }
 }
 
+/**
+ * Draws different components relevant to initial Layout
+ * Arranges them in a Column placed onto a Surface
+ */
 @Composable
 fun WelcomeLayout(){
     Surface(modifier = Modifier.fillMaxSize(),
@@ -60,16 +65,24 @@ fun WelcomeLayout(){
     }
 }
 
+/**
+ * Composable image of logo artwork
+ * When called, draws logo to wherever it is called
+ */
 @Composable
 fun GlobeImage(){
     val image = painterResource(R.drawable.globeartworkmedium)
     Image(painter = image, contentDescription = null)
 }
 
+/**
+ * Info Button places button into a row
+ * Manages local boolean value used to display or dismiss dialog
+ */
 @Composable
 fun InfoButton() {
-    val showDialog = remember { mutableStateOf(false) }
-    if (showDialog.value) {
+    val showDialog = remember { mutableStateOf(false) } //must use remember to ensure checking of value
+    if (showDialog.value) { //if value is set to true, we call composable alert function
         InfoAlert(msg = stringResource(R.string.app_description),
             showDialog = showDialog.value,
             onDismiss = {showDialog.value = false})
@@ -83,7 +96,7 @@ fun InfoButton() {
         )
     ){
         TextButton(
-            onClick = {showDialog.value = true}
+            onClick = {showDialog.value = true} //flips value to true upon click
         ) {
             Text("about",
                 fontFamily = FontFamily(Font(R.font.rustycage)),
@@ -129,8 +142,11 @@ fun WelcomeText(){
 
 @Composable
 fun GetStartedButton(){
+    val mContext = LocalContext.current
     TextButton(modifier = Modifier.padding(top = 24.dp),
-        onClick = {  }
+        onClick = {
+            mContext.startActivity(Intent(mContext, GatherActivity::class.java))
+        }
     ) {
         GetStartedButtonStyle()
     }

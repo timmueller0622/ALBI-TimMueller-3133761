@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- custom permissions added to access location, internet and allow to post notifications -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Gives approximate location information -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Included to allow precise location access. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALBI"
         tools:targetApi="31">
+        <activity
+            android:name=".FactsActivity"
+            android:exported="false" />
         <activity
             android:name=".GatherActivity"
             android:exported="false" />
