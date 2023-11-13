@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ALBI</string>
+    <string name="app_description">Welcome to ALBI - A Little Bit Interesting!
+        \nThis app is made to bring you fun, mildly interesting facts
+        about how your current location relates to the rest of the world.
+        Get started and find out more!</string>
 </resources>
