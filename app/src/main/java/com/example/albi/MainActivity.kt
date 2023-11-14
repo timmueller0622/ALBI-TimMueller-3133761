@@ -142,7 +142,7 @@ fun WelcomeText(){
 
 @Composable
 fun GetStartedButton(){
-    val mContext = LocalContext.current
+    val mContext = LocalContext.current //current context needs to be saved to variable to use in onClick, since onClick is not composable
     TextButton(modifier = Modifier.padding(top = 24.dp),
         onClick = {
             mContext.startActivity(Intent(mContext, GatherActivity::class.java))
