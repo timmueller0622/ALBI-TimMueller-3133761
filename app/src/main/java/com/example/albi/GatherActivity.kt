@@ -28,8 +28,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.albi.ui.theme.Fuji
-import com.example.albi.ui.theme.FullMango
+import com.example.albi.ui.theme.*
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationServices
@@ -65,7 +64,7 @@ fun GetUserLocation(context: Context){
 @Composable
 fun GatherLayout(){
     Surface(Modifier.fillMaxSize(),
-        color = FullMango){
+        color = Kent){
         Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             CurrentLocationText()
             GetFactsButton()
@@ -162,7 +161,7 @@ fun GetFactsButtonStyle(){
     Row(modifier = Modifier
         .padding(16.dp)
         .background(
-            color = Color(255, 255, 255, 125),
+            color = TransWhite,
             shape = RoundedCornerShape(50.dp)
         )
     ){
