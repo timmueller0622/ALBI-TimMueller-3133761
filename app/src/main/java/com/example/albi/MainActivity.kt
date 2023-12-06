@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.sp
 import com.example.albi.ui.theme.*
 
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -167,5 +168,7 @@ fun GetStartedButtonStyle(){
             modifier = Modifier.padding(20.dp))
     }
 }
+
+
 
 

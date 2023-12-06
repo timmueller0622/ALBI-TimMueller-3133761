@@ -120,6 +120,18 @@ fun FactButtonStyle(factLabel : String){
     }
 }
 
+fun GetHeightFacts(){
+
+}
+
+fun GetDistanceFacts(){
+
+}
+
+fun GetNamesFacts(){
+
+}
+
 /*Row(modifier = Modifier
             .fillMaxWidth()
             .padding(12.dp)
